@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import HouseCard from "../components/HouseCard";
 
 const API_URL = "http://localhost:5005";
 
@@ -19,17 +20,11 @@ function HouseListPage() {
   }, []);
 
   return (
-    <div className='ProjectListPage'>
+    <div>
       <h1>List of Houses</h1>
-      {houses.map((house) => {
-        return (
-          <div className='card' key={house._id}>
-            <Link to={`/projects/${house._id}`}>
-              <h3>{house.title}</h3>
-            </Link>
-          </div>
-        );
-      })}
+      {houses.map((house) => (
+        <HouseCard key={house._id} {...house} />
+      ))}
     </div>
   );
 }
