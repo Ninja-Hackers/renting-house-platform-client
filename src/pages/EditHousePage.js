@@ -26,6 +26,15 @@ function EditHousePage(props) {
       .catch((error) => console.log(error));
   }, [houseId]);
 
+  const deleteHouse = () => {
+    axios
+      .delete(`${API_URL}/api/houses/${houseId}`)
+      .then(() => {
+        navigate("/houses");
+      })
+      .catch((err) => console.log(err));
+  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const requestBody = { title, description, cost, location };
@@ -104,6 +113,7 @@ function EditHousePage(props) {
 
         <button type='submit'>Submit</button>
       </form>
+      <button onClick={deleteHouse}>Delete House</button>
     </div>
   );
 }
