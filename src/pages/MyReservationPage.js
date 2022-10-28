@@ -20,7 +20,7 @@ function MyReservationPage() {
 
   return (
     <div>
-      <h1>List of Houses</h1>
+      <h1>List of My Reservations</h1>
       {reservations.map((reservation) => (
         <ReservationDetailsCard key={reservation._id} {...reservation} />
       ))}

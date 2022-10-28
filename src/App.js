@@ -7,6 +7,7 @@ import CreateHousePage from "./pages/CreateHousePage";
 import HouseDetailsPage from "./pages/HouseDetailsPage";
 import EditHousePage from "./pages/EditHousePage";
 import MyReservationPage from "./pages/MyReservationPage";
+import MyHousePage from "./pages/MyHousePage";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         <Route path='/create-house' element={<CreateHousePage />} />
         <Route path='/houses/:houseId' element={<HouseDetailsPage />} />
         <Route path='/houses/edit/:houseId' element={<EditHousePage />} />
-        <Route path='/reservations' element={<MyReservationPage />} />
+        <Route path='/my-reservations' element={<MyReservationPage />} />
+        <Route path='/my-houses' element={<MyHousePage />} />
       </Routes>
     </div>
   );
