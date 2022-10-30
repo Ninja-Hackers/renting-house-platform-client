@@ -50,7 +50,7 @@ function HouseDetailsPage() {
         <button>Back to houses</button>
       </Link>
 
-      {house && house.ownerId === user._id ? (
+      {house && user && house.ownerId === user._id ? (
         <Link to={`/houses/edit/${houseId}`}>
           <button>Edit House</button>
         </Link>
