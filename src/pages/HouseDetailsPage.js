@@ -2,12 +2,16 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import AddReservation from "../components/AddReservation";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 
 const API_URL = "http://localhost:5005";
 
 function HouseDetailsPage() {
   const [house, setHouse] = useState(null);
   const { houseId } = useParams();
+
+  const { user } = useContext(AuthContext);
 
   const getHouse = () => {
     axios
@@ -46,9 +50,13 @@ function HouseDetailsPage() {
         <button>Back to houses</button>
       </Link>
 
-      <Link to={`/houses/edit/${houseId}`}>
-        <button>Edit House</button>
-      </Link>
+      {house && house.ownerId === user._id ? (
+        <Link to={`/houses/edit/${houseId}`}>
+          <button>Edit House</button>
+        </Link>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
