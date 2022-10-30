@@ -27,8 +27,11 @@ function EditHousePage(props) {
   }, [houseId]);
 
   const deleteHouse = () => {
+    const storedToken = localStorage.getItem("authToken");
     axios
-      .delete(`${API_URL}/api/houses/${houseId}`)
+      .delete(`${API_URL}/api/houses/${houseId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then(() => {
         navigate("/houses");
       })
@@ -38,9 +41,12 @@ function EditHousePage(props) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const requestBody = { title, description, cost, location };
+    const storedToken = localStorage.getItem("authToken");
 
     axios
-      .put(`${API_URL}/api/houses/${houseId}`, requestBody)
+      .put(`${API_URL}/api/houses/${houseId}`, requestBody, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         navigate(`/houses/${houseId}`);
       });

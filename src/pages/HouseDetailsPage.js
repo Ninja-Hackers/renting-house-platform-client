@@ -40,7 +40,6 @@ function HouseDetailsPage() {
             <p>Number of Guests: {reservation.numberOfGuests}</p>
           </li>
         ))}
-
       <AddReservation refreshHouse={getHouse} houseId={houseId} />
 
       <Link to='/houses'>

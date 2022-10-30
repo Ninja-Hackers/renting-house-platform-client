@@ -13,8 +13,12 @@ function AddHouse(props) {
     e.preventDefault();
 
     const requestBody = { title, description, cost, location };
+    const storedToken = localStorage.getItem("authToken");
+
     axios
-      .post(`${API_URL}/api/houses`, requestBody)
+      .post(`${API_URL}/api/houses`, requestBody, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         setTitle("");
         setDescription("");

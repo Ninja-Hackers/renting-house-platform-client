@@ -6,11 +6,14 @@ const API_URL = "http://localhost:5005";
 
 function MyHousePage() {
   const [houses, setHouses] = useState([]);
-  console.log(houses);
 
   const getAllHouses = () => {
+    const storedToken = localStorage.getItem("authToken");
+
     axios
-      .get(`${API_URL}/api/my-houses`)
+      .get(`${API_URL}/api/my-houses`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => setHouses(response.data))
       .catch((error) => console.log(error));
   };
@@ -22,9 +25,11 @@ function MyHousePage() {
   return (
     <div>
       <h1>List of My Houses</h1>
-      {houses.map((house) => (
-        <HouseDetailsCard key={house._id} {...house} />
-      ))}
+      {houses.length > 1 ? (
+        houses.map((house) => <HouseDetailsCard key={house._id} {...house} />)
+      ) : (
+        <p>There are no houses</p>
+      )}
     </div>
   );
 }
