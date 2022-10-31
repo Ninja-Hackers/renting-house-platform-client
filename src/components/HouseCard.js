@@ -1,16 +1,19 @@
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 function HouseCard({ title, description, imageUrl, _id }) {
   return (
-    <div className='card' style={{ width: "30rem" }}>
-      <div className='card-body'>
-        <img src={imageUrl} alt={title} />
-        <Link to={`/houses/${_id}`}>
-          <h3>{title}</h3>
-        </Link>
-        <p style={{ maxWidth: "400px" }}>{description} </p>
-      </div>
-    </div>
+    <Card className='text-center' style={{ width: "18rem" }}>
+      <Card.Img variant='top' src={imageUrl} alt={title} />
+      <Card.Body>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>{description}</Card.Text>
+        <Button as={Link} variant='primary' to={`/houses/${_id}`}>
+          Details
+        </Button>
+      </Card.Body>
+    </Card>
   );
 }
 
