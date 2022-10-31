@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
@@ -8,6 +9,7 @@ function AddHouse(props) {
   const [description, setDescription] = useState("");
   const [cost, setCost] = useState(0);
   const [location, setLocation] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,10 +22,7 @@ function AddHouse(props) {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
-        setTitle("");
-        setDescription("");
-        setCost("");
-        setLocation("");
+        navigate("/my-houses");
       })
       .catch((error) => console.log(error));
   };
