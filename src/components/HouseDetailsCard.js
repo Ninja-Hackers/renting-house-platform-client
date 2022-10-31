@@ -6,11 +6,13 @@ function HouseDetailsCard({
   cost,
   location,
   reservations,
+  _id,
 }) {
   return (
     <div className='card' style={{ width: "30rem" }}>
       <div className='card-body'>
         <h3>{title}</h3>
+
         <p>{description}</p>
         <p>{cost}</p>
         <p>{location}</p>
@@ -21,6 +23,9 @@ function HouseDetailsCard({
             <p>Number of Guests: {reservation.numberOfGuests}</p>
           </li>
         ))}
+        <Link to={`/houses/edit/${_id}`}>
+          <button>Edit House</button>
+        </Link>
       </div>
     </div>
   );

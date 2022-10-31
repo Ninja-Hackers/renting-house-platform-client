@@ -25,7 +25,7 @@ function MyHousePage() {
   return (
     <div>
       <h1>List of My Houses</h1>
-      {houses.length > 1 ? (
+      {houses.length >= 1 ? (
         houses.map((house) => <HouseDetailsCard key={house._id} {...house} />)
       ) : (
         <p>There are no houses</p>
