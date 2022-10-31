@@ -1,102 +1,59 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
-function Navbar() {
+function NavBar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   return (
-    <nav className='navbar navbar-expand-lg bg-light'>
-      <div className='container-fluid'>
-        <Link className='navbar-brand' to='/'>
+    <Navbar bg='light' expand='lg'>
+      <Container>
+        <Navbar.Brand as={Link} to='/'>
           Home
-        </Link>
-        <button
-          className='navbar-toggler'
-          type='button'
-          data-bs-toggle='collapse'
-          data-bs-target='#navbarNav'
-          aria-controls='navbarNav'
-          aria-expanded='false'
-          aria-label='Toggle navigation'
-        >
-          <span className='navbar-toggler-icon'></span>
-        </button>
-        <div className='collapse navbar-collapse' id='navbarNav'>
-          {/* we are inside of ul regardles of login/logout/register */}
-          <ul className='navbar-nav'>
-            <li className='nav-item'>
-              <Link className='nav-link' aria-current='page' to='/houses'>
-                Houses
-              </Link>
-            </li>
-
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls='basic-navbar-nav' />
+        <Navbar.Collapse id='basic-navbar-nav'>
+          <Nav className='me-auto'>
+            <Nav.Link as={Link} to='/houses'>
+              Houses
+            </Nav.Link>
             {isLoggedIn && (
               <>
-                <li className='nav-item'>
-                  <Link className='nav-link' to='/create-house'>
-                    Create
-                  </Link>
-                </li>
-                <li className='nav-item'>
-                  <Link className='nav-link' to='/my-reservations'>
-                    My Reservations
-                  </Link>
-                </li>
-                <li className='nav-item'>
-                  <Link className='nav-link' to='/my-houses'>
+                <NavDropdown title='My Details' id='basic-nav-dropdown'>
+                  <NavDropdown.Item as={Link} to='/my-houses'>
                     My Houses
-                  </Link>
-                </li>
-                <li className='nav-item'>
-                  <Link onClick={logOutUser} className='nav-link' to='/'>
-                    Logout
-                  </Link>
-                </li>
-                <li className='nav-item'>
-                  <Link className='btn btn-outline-success my-2 my-sm-0' to='/'>
-                    {user && user.name}
-                  </Link>
-                </li>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to='/my-reservations'>
+                    My reservations
+                  </NavDropdown.Item>
+                </NavDropdown>
+                <Nav.Link as={Link} to='/'>
+                  {user && user.name}
+                </Nav.Link>
+                <Nav.Link as={Link} onClick={logOutUser} to='/'>
+                  Logout
+                </Nav.Link>
               </>
             )}
 
             {!isLoggedIn && (
               <>
-                <li className='nav-item'>
-                  <Link className='nav-link' to='/login'>
-                    Login
-                  </Link>
-                </li>
-                <li className='nav-item'>
-                  <Link className='nav-link' to='/signup'>
-                    Signup
-                  </Link>
-                </li>
+                <Nav.Link as={Link} to='/login'>
+                  Login
+                </Nav.Link>
+                <Nav.Link as={Link} to='/signup'>
+                  Signup
+                </Nav.Link>
               </>
             )}
-          </ul>
-        </div>
-      </div>
-    </nav>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 
-export default Navbar;
-
-// import { Link } from "react-router-dom";
-
-// function Navbar() {
-//   return (
-//     <nav>
-//       <Link to='/'>
-//         <button>Home</button>
-//       </Link>
-
-//       <Link to='/houses'>
-//         <button>Houses</button>
-//       </Link>
-//     </nav>
-//   );
-// }
-
-// export default Navbar;
+export default NavBar;
