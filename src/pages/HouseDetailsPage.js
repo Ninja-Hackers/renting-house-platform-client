@@ -34,6 +34,15 @@ function HouseDetailsPage() {
           <img src={house.imageUrl} alt={house.title} />
           <h1>{house.title}</h1>
           <p>{house.description}</p>
+          {house.offers.basicOffers.length >= 1 && (
+            <li className='card'>
+              {house.offers.basicOffers.map((offer) => (
+                <div key={offer}>
+                  <p>{offer}</p>
+                </div>
+              ))}
+            </li>
+          )}
         </>
       )}
 

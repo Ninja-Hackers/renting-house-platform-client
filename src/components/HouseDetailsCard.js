@@ -6,6 +6,7 @@ function HouseDetailsCard({
   imageUrl,
   cost,
   location,
+  offers,
   reservations,
   _id,
 }) {
@@ -17,6 +18,16 @@ function HouseDetailsCard({
         <p>{description}</p>
         <p>{cost}</p>
         <p>{location}</p>
+        {offers.basicOffers.length >= 1 && (
+          <li className='card'>
+            {offers.basicOffers.map((offer) => (
+              <div key={offer}>
+                <p>{offer}</p>
+              </div>
+            ))}
+          </li>
+        )}
+
         {reservations.map((reservation) => (
           <li className='card' key={reservation._id}>
             <p>Check In: {reservation.checkIn}</p>
