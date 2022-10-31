@@ -31,6 +31,7 @@ function HouseDetailsPage() {
     <div>
       {house && (
         <>
+          <img src={house.imageUrl} alt={house.title} />
           <h1>{house.title}</h1>
           <p>{house.description}</p>
         </>

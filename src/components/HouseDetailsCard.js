@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 function HouseDetailsCard({
   title,
   description,
+  imageUrl,
   cost,
   location,
   reservations,
@@ -11,8 +12,8 @@ function HouseDetailsCard({
   return (
     <div className='card' style={{ width: "30rem" }}>
       <div className='card-body'>
+        <img src={imageUrl} alt={title} />
         <h3>{title}</h3>
-
         <p>{description}</p>
         <p>{cost}</p>
         <p>{location}</p>

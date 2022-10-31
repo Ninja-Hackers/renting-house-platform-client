@@ -7,14 +7,32 @@ const API_URL = "http://localhost:5005";
 function AddHouse(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [cost, setCost] = useState(0);
   const [location, setLocation] = useState("");
   const navigate = useNavigate();
 
+  // ******** this method handles the file upload ********
+  const handleFileUpload = (e) => {
+    const uploadData = new FormData();
+
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new movie in '/api/houses' POST route
+    uploadData.append("imageUrl", e.target.files[0]);
+
+    axios
+      .post(`${API_URL}/api/upload`, uploadData)
+      .then((response) => {
+        // response carries "fileUrl" which we can use to update the state
+        setImageUrl(response.data.fileUrl);
+      })
+      .catch((err) => console.log("Error while uploading the file: ", err));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = { title, description, cost, location };
+    const requestBody = { title, description, imageUrl, cost, location };
     const storedToken = localStorage.getItem("authToken");
 
     axios
@@ -61,6 +79,19 @@ function AddHouse(props) {
             required={true}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+
+        <div className='mb-3'>
+          <label htmlFor='formImage' className='form-label'>
+            Image
+          </label>
+          <input
+            type='file'
+            className='form-control'
+            id='formImage'
+            name='imageUrl'
+            onChange={(e) => handleFileUpload(e)}
           />
         </div>
 
