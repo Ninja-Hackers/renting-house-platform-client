@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import HouseCard from "../components/HouseCard";
+import "./HouseListPage.css";
 
 function HouseListPage() {
   const [houses, setHouses] = useState([]);
@@ -18,10 +19,15 @@ function HouseListPage() {
 
   return (
     <div>
-      <h1>List of Houses</h1>
-      {houses.map((house) => (
-        <HouseCard key={house._id} {...house} />
-      ))}
+      <div className='product-container'>
+        <div className='container'>
+          <div className='row flex-row'>
+            {houses.map((house) => (
+              <HouseCard key={house._id} {...house} />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
