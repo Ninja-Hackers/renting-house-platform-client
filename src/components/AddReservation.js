@@ -3,8 +3,6 @@ import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 
-const API_URL = "http://localhost:5005";
-
 function AddReservation({ houseId, refreshHouse }) {
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
@@ -19,7 +17,7 @@ function AddReservation({ houseId, refreshHouse }) {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .post(`${API_URL}/api/reservations`, requestBody, {
+      .post(`${process.env.REACT_APP_API_URL}/api/reservations`, requestBody, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {

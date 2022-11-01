@@ -3,8 +3,6 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import OffersCheckbox from "../components/OffersCheckbox";
 
-const API_URL = "http://localhost:5005";
-
 const offerList = [
   { value: "wifi", label: "Wifi" },
   { value: "tv", label: "TV" },
@@ -45,7 +43,7 @@ function EditHousePage(props) {
     uploadData.append("imageUrl", e.target.files[0]);
 
     axios
-      .post(`${API_URL}/api/upload`, uploadData)
+      .post(`${process.env.REACT_APP_API_URL}/api/upload`, uploadData)
       .then((response) => {
         // response carries "fileUrl" which we can use to update the state
         setImageUrl(response.data.fileUrl);
@@ -55,7 +53,7 @@ function EditHousePage(props) {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/houses/${houseId}`)
+      .get(`${process.env.REACT_APP_API_URL}/api/houses/${houseId}`)
       .then((response) => {
         const oneHouse = response.data;
         setTitle(oneHouse.title);
@@ -77,7 +75,7 @@ function EditHousePage(props) {
   const deleteHouse = () => {
     const storedToken = localStorage.getItem("authToken");
     axios
-      .delete(`${API_URL}/api/houses/${houseId}`, {
+      .delete(`${process.env.REACT_APP_API_URL}/api/houses/${houseId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then(() => {
@@ -103,9 +101,13 @@ function EditHousePage(props) {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .put(`${API_URL}/api/houses/${houseId}`, requestBody, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
+      .put(
+        `${process.env.REACT_APP_API_URL}/api/houses/${houseId}`,
+        requestBody,
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      )
       .then((response) => {
         navigate(`/houses/${houseId}`);
       });

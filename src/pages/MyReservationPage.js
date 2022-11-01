@@ -2,15 +2,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import ReservationDetailsCard from "../components/ReservationDetailsCard";
 
-const API_URL = "http://localhost:5005";
-
 function MyReservationPage() {
   const [reservations, setReservations] = useState([]);
 
   const getAllReservations = () => {
     const storedToken = localStorage.getItem("authToken");
     axios
-      .get(`${API_URL}/api/reservations`, {
+      .get(`${process.env.REACT_APP_API_URL}/api/reservations`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => setReservations(response.data))

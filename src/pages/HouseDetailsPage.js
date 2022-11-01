@@ -5,8 +5,6 @@ import AddReservation from "../components/AddReservation";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 
-const API_URL = "http://localhost:5005";
-
 function HouseDetailsPage() {
   const [house, setHouse] = useState(null);
   const { houseId } = useParams();
@@ -15,7 +13,7 @@ function HouseDetailsPage() {
 
   const getHouse = () => {
     axios
-      .get(`${API_URL}/api/houses/${houseId}`)
+      .get(`${process.env.REACT_APP_API_URL}/api/houses/${houseId}`)
       .then((response) => {
         const oneHouse = response.data;
         setHouse(oneHouse);

@@ -3,8 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import OffersCheckbox from "./OffersCheckbox";
 
-const API_URL = "http://localhost:5005";
-
 const offerList = [
   { value: "wifi", label: "Wifi" },
   { value: "tv", label: "TV" },
@@ -43,7 +41,7 @@ function AddHouse(props) {
     uploadData.append("imageUrl", e.target.files[0]);
 
     axios
-      .post(`${API_URL}/api/upload`, uploadData)
+      .post(`${process.env.REACT_APP_API_URL}/api/upload`, uploadData)
       .then((response) => {
         // response carries "fileUrl" which we can use to update the state
         setImageUrl(response.data.fileUrl);
@@ -69,7 +67,7 @@ function AddHouse(props) {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .post(`${API_URL}/api/houses`, requestBody, {
+      .post(`${process.env.REACT_APP_API_URL}/api/houses`, requestBody, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {

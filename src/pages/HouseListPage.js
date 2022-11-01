@@ -2,14 +2,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import HouseCard from "../components/HouseCard";
 
-const API_URL = "http://localhost:5005";
-
 function HouseListPage() {
   const [houses, setHouses] = useState([]);
 
   const getAllHouses = () => {
     axios
-      .get(`${API_URL}/api/houses`)
+      .get(`${process.env.REACT_APP_API_URL}/api/houses`)
       .then((response) => setHouses(response.data))
       .catch((error) => console.log(error));
   };
