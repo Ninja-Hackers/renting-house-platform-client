@@ -10,23 +10,18 @@ const navBtn = {
   backgroundColor: "#7fdff5",
   borderRadius: "6px",
   color: "white",
-  margin: "0rem 0.3rem",
+  margin: "0.3rem 0.3rem",
   fontWeight: "medium",
-  padding:"0.5rem 1rem"
+  padding: "0.5rem 1rem",
 };
 
 function NavBar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="black" variant="dark">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <img
-            src="https://www.seekpng.com/png/full/187-1875894_cottage-drawing-pretty-house-modern-house-vector-house.png"
-            width="120"
-            height="30"
-            alt="Home logo"
-          />
+          <img src="./home-logo.jpg" width="85" height="45" alt="Home logo" />
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
