@@ -31,41 +31,42 @@ function AddReservation({ houseId, refreshHouse, ownerId }) {
   };
 
   return (
-    <div className='card'>
+    <div className="card">
       {isLoggedIn ? (
         <>
           <h3>Add New Reservation</h3>
           <form onSubmit={handleSubmit}>
-            <div className='col d-flex flex-column justify-content-center col-12 col-md-12 col-lg-12 mb-2 p-4'>
+            <div className="col d-flex flex-column justify-content-center col-12 col-md-12 col-lg-12 mb-2 p-4">
               <label>Check In:</label>
               <input
-                type='datetime-local'
-                name='checkIn'
+                type="datetime-local"
+                name="checkIn"
                 value={checkIn}
                 onChange={(e) => setCheckIn(e.target.value)}
               />
 
               <label>Check Out:</label>
               <input
-                type='datetime-local'
-                name='checkOut'
+                type="datetime-local"
+                name="checkOut"
                 value={checkOut}
                 onChange={(e) => setCheckOut(e.target.value)}
               />
 
               <label>Number of Guests</label>
               <input
-                type='number'
-                name='numberOfGuests'
+                type="number"
+                name="numberOfGuests"
                 value={numberOfGuests}
+                min="1"
                 onChange={(e) => setNumberOfGuests(e.target.value)}
               />
               {ownerId !== user._id ? (
-                <button className='reservation-btn' type='submit'>
+                <button className="reservation-btn" type="submit">
                   Add Reservation
                 </button>
               ) : (
-                <p className='mt-4'>You are the owner of this house</p>
+                <p className="mt-4">You are the owner of this house</p>
               )}
             </div>
           </form>

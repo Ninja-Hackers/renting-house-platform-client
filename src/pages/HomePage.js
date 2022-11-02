@@ -1,29 +1,8 @@
 import { Form, Button } from "react-bootstrap";
 
-const searchBtn = {
-  backgroundColor: "#7fdff5 !important",
-  borderRadius: "6px",
-  color: "white",
-  margin: "0.3rem 0.3rem",
-  fontWeight: "medium",
-  padding: "0.5rem 1rem",
-};
-
 function HomePage() {
   return (
     <div>
-      {/* <Form className='d-flex'>
-        <Form.Control
-          type='search'
-          placeholder='Search'
-          className='me-2'
-          aria-label='Search'
-        />
-        <Button variant='outline-success'>Search</Button>
-      </Form>
-      <div className='home-page'>
-        <h1>Home page</h1>
-      </div> */}
       <div className="card text-bg-dark mb-3">
         <img
           src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
@@ -61,8 +40,11 @@ function HomePage() {
           </p>
         </div>
         <div className="row row-cols-1 row-cols-md-3 g-4 ">
-          <div className="col text-white mb-2">
-            <div className="card h-100 bg-dark d-felx align-items-center">
+          <div className="col text-white mb-2 ">
+            <div
+              className="card h-100 bg-dark d-felx align-items-center"
+              style={{ borderRadius: "2rem" }}
+            >
               <img
                 src="./verifyList-home.svg"
                 className="card-img-top"
@@ -79,7 +61,10 @@ function HomePage() {
             </div>
           </div>
           <div className="col text-white mb-2">
-            <div className="card h-100 bg-dark d-felx align-items-center">
+            <div
+              className="card h-100 bg-dark d-felx align-items-center"
+              style={{ borderRadius: "2rem" }}
+            >
               <img
                 src="./home-footer-document-icon.svg"
                 className="card-img-top"
@@ -96,7 +81,10 @@ function HomePage() {
             </div>
           </div>
           <div className="col text-white mb-2">
-            <div className="card h-100 bg-dark d-felx align-items-center">
+            <div
+              className="card h-100 bg-dark d-felx align-items-center"
+              style={{ borderRadius: "2rem" }}
+            >
               <img
                 src="./customer-home-icon.svg"
                 className="card-img-top"

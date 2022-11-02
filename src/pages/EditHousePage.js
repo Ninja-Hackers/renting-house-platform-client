@@ -27,6 +27,25 @@ function EditHousePage(props) {
   const { houseId } = useParams();
   const navigate = useNavigate();
 
+  const submitBtn = {
+    backgroundColor: "#7fdff5",
+    borderRadius: "6px",
+    color: "white",
+    margin: "0rem 0.3rem",
+    fontWeight: "bold",
+    padding: "0.5rem 1rem",
+    border: "none",
+  };
+  const deleteBtn = {
+    backgroundColor: "#DC5345",
+    borderRadius: "6px",
+    color: "white",
+    margin: "0rem 0.3rem",
+    fontWeight: "bold",
+    padding: "0.5rem 1rem",
+    border: "none",
+  };
+
   const onHandleChange = useCallback((value, name) => {
     setOffers((prev) => ({
       ...prev,
@@ -114,166 +133,188 @@ function EditHousePage(props) {
   };
 
   return (
-    <div>
-      <h3>Edit the House</h3>
+    <div style={{ backgroundColor: "#11222b" }}>
+      <div className="container py-5 h-100 " style={{ width: "50%" }}>
+        <div className="card" style={{ borderRadius: "2rem" }}>
+          <div
+            className="card-header bg-dark text-white fs-4"
+            style={{ borderRadius: "2rem 2rem 0rem 0rem" }}
+          >
+            Edit your House details
+          </div>
+          <div className="card-body p-lg-3 text-black">
+            <form onSubmit={handleFormSubmit}>
+              <div className="mb-4">
+                <label htmlFor="formTitle" className="form-label">
+                  Title
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="formTitle"
+                  name="title"
+                  required={true}
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </div>
 
-      <img src={imageUrl} alt={title} />
+              <div className="mb-4">
+                <label htmlFor="formDescription" className="form-label">
+                  Description
+                </label>
+                <textarea
+                  type="text"
+                  className="form-control"
+                  id="formDescription"
+                  name="description"
+                  required={true}
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </div>
 
-      <form onSubmit={handleFormSubmit}>
-        <div className='mb-3'>
-          <label htmlFor='formTitle' className='form-label'>
-            Title
-          </label>
-          <input
-            type='text'
-            className='form-control'
-            id='formTitle'
-            name='title'
-            required={true}
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
+              <div className="mb-4">
+                <label htmlFor="formImage" className="form-label">
+                  Image
+                </label>
+                {/* <img src={imageUrl} alt={title} /> */}
+                <input
+                  type="file"
+                  className="form-control"
+                  id="formImage"
+                  name="imageUrl"
+                  onChange={(e) => handleFileUpload(e)}
+                />
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="formLocation" className="form-label">
+                  Location
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="formLocation"
+                  name="location"
+                  required={true}
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                />
+              </div>
+
+              <div className="row">
+                <div className="col">
+                  <div className="mb-4">
+                    <label htmlFor="formGuests" className="form-label">
+                      Guests
+                    </label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="formGuests"
+                      name="Guests"
+                      required={true}
+                      min="0"
+                      max="20"
+                      value={guests}
+                      onChange={(e) => setGuests(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="mb-4">
+                    <label htmlFor="formCost" className="form-label">
+                      Cost
+                    </label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="formCost"
+                      name="cost"
+                      required={true}
+                      value={cost}
+                      onChange={(e) => setCost(e.target.value)}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col">
+                  <div className="mb-4">
+                    <label htmlFor="formBedroom" className="form-label">
+                      Bedroom
+                    </label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="formBedroom"
+                      name="Bedroom"
+                      required={true}
+                      min="0"
+                      value={bedroom}
+                      onChange={(e) => setBedroom(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="mb-4">
+                    <label htmlFor="formBed" className="form-label">
+                      Bed
+                    </label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="formBed"
+                      name="Bed"
+                      required={true}
+                      min="0"
+                      value={bed}
+                      onChange={(e) => setBed(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="mb-4">
+                    <label htmlFor="formBath" className="form-label">
+                      Bath
+                    </label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="formBath"
+                      name="Bath"
+                      required={true}
+                      min="0"
+                      value={bath}
+                      onChange={(e) => setBath(e.target.value)}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="mb-4">
+                  <OffersCheckbox
+                    name="basicOffers"
+                    title="Offers"
+                    value={offers.basicOffers}
+                    options={offerList}
+                    onChangeFunc={onHandleChange}
+                  />
+                </div>
+              </div>
+
+              <button style={submitBtn} type="submit">
+                Submit
+              </button>
+              <button style={deleteBtn} onClick={deleteHouse}>
+                Delete House
+              </button>
+            </form>
+          </div>
         </div>
-
-        <div className='mb-3'>
-          <label htmlFor='formDescription' className='form-label'>
-            Description
-          </label>
-          <textarea
-            type='text'
-            className='form-control'
-            id='formDescription'
-            name='description'
-            required={true}
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-
-        <div className='mb-3'>
-          <label htmlFor='formImage' className='form-label'>
-            Image
-          </label>
-          <input
-            type='file'
-            className='form-control'
-            id='formImage'
-            name='imageUrl'
-            onChange={(e) => handleFileUpload(e)}
-          />
-        </div>
-
-        <div className='mb-3'>
-          <label htmlFor='formCost' className='form-label'>
-            Cost
-          </label>
-          <input
-            type='number'
-            className='form-control'
-            id='formCost'
-            name='cost'
-            required={true}
-            value={cost}
-            onChange={(e) => setCost(e.target.value)}
-          />
-        </div>
-
-        <div className='mb-3'>
-          <label htmlFor='formLocation' className='form-label'>
-            Location
-          </label>
-          <input
-            type='text'
-            className='form-control'
-            id='formLocation'
-            name='location'
-            required={true}
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-        </div>
-
-        <div className='mb-3'>
-          <label htmlFor='formGuests' className='form-label'>
-            Guests
-          </label>
-          <input
-            type='number'
-            className='form-control'
-            id='formGuests'
-            name='Guests'
-            required={true}
-            min='0'
-            max='20'
-            value={guests}
-            onChange={(e) => setGuests(e.target.value)}
-          />
-        </div>
-
-        <div className='mb-3'>
-          <label htmlFor='formBedroom' className='form-label'>
-            Bedroom
-          </label>
-          <input
-            type='number'
-            className='form-control'
-            id='formBedroom'
-            name='Bedroom'
-            required={true}
-            min='0'
-            value={bedroom}
-            onChange={(e) => setBedroom(e.target.value)}
-          />
-        </div>
-
-        <div className='mb-3'>
-          <label htmlFor='formBed' className='form-label'>
-            Bed
-          </label>
-          <input
-            type='number'
-            className='form-control'
-            id='formBed'
-            name='Bed'
-            required={true}
-            min='0'
-            value={bed}
-            onChange={(e) => setBed(e.target.value)}
-          />
-        </div>
-
-        <div className='mb-3'>
-          <label htmlFor='formBath' className='form-label'>
-            Bath
-          </label>
-          <input
-            type='number'
-            className='form-control'
-            id='formBath'
-            name='Bath'
-            required={true}
-            min='0'
-            value={bath}
-            onChange={(e) => setBath(e.target.value)}
-          />
-        </div>
-
-        <div className='mb-3'>
-          <label htmlFor='formLocation' className='form-label'>
-            Offers
-          </label>
-          <OffersCheckbox
-            name='basicOffers'
-            //title='Offers'
-            value={offers.basicOffers}
-            options={offerList}
-            onChangeFunc={onHandleChange}
-          />
-        </div>
-
-        <button type='submit'>Submit</button>
-      </form>
-      <button onClick={deleteHouse}>Delete House</button>
+      </div>
     </div>
   );
 }
