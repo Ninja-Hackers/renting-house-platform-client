@@ -1,0 +1,9 @@
+.reservation-btn {
+  background-color: #7fdff5;
+  border-radius: 6px;
+  border-color: #7fdff5;
+  color: white;
+  margin: 0.3rem 0.3rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+}

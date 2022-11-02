@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import "../pages/HouseListPage.css";
 
 const defaultImageUrl =
-  "https://res.cloudinary.com/dlualxvyw/image/upload/v1667329119/renting-house-platform/default_hfyfkl.jpg";
+  "https://res.cloudinary.com/dlualxvyw/image/upload/v1667406135/renting-house-platform/default-3_c6nyfo.jpg";
 
 function HouseCard({ title, description, imageUrl, cost, location, _id }) {
   return (

@@ -2,9 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import "./AddReservation.css";
 
-function AddReservation({ houseId, refreshHouse }) {
-  const { isLoggedIn, logOutUser } = useContext(AuthContext);
+function AddReservation({ houseId, refreshHouse, ownerId }) {
+  const { isLoggedIn, user } = useContext(AuthContext);
 
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
@@ -30,35 +31,43 @@ function AddReservation({ houseId, refreshHouse }) {
   };
 
   return (
-    <div className='AddTask'>
+    <div className='card'>
       {isLoggedIn ? (
         <>
           <h3>Add New Reservation</h3>
           <form onSubmit={handleSubmit}>
-            <label>Check In:</label>
-            <input
-              type='datetime-local'
-              name='checkIn'
-              value={checkIn}
-              onChange={(e) => setCheckIn(e.target.value)}
-            />
+            <div className='col d-flex flex-column justify-content-center col-12 col-md-12 col-lg-12 mb-2 p-4'>
+              <label>Check In:</label>
+              <input
+                type='datetime-local'
+                name='checkIn'
+                value={checkIn}
+                onChange={(e) => setCheckIn(e.target.value)}
+              />
 
-            <label>Check Out:</label>
-            <input
-              type='datetime-local'
-              name='checkOut'
-              value={checkOut}
-              onChange={(e) => setCheckOut(e.target.value)}
-            />
+              <label>Check Out:</label>
+              <input
+                type='datetime-local'
+                name='checkOut'
+                value={checkOut}
+                onChange={(e) => setCheckOut(e.target.value)}
+              />
 
-            <label>Number of Guests</label>
-            <input
-              type='number'
-              name='numberOfGuests'
-              value={numberOfGuests}
-              onChange={(e) => setNumberOfGuests(e.target.value)}
-            />
-            <button type='submit'>Add Reservation</button>
+              <label>Number of Guests</label>
+              <input
+                type='number'
+                name='numberOfGuests'
+                value={numberOfGuests}
+                onChange={(e) => setNumberOfGuests(e.target.value)}
+              />
+              {ownerId !== user._id ? (
+                <button className='reservation-btn' type='submit'>
+                  Add Reservation
+                </button>
+              ) : (
+                <p className='mt-4'>You are the owner of this house</p>
+              )}
+            </div>
           </form>
         </>
       ) : (
