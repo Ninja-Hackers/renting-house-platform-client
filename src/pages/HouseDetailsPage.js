@@ -101,13 +101,9 @@ function HouseDetailsPage() {
                             <h4 className='align-items-center'>Reservations</h4>
                             {house &&
                               house.reservations.map((reservation) => (
-                                <li className='card' key={reservation._id}>
+                                <li className='card mb-2' key={reservation._id}>
                                   <p>Check In: {reservation.checkIn}</p>
                                   <p>Check Out: {reservation.checkOut}</p>
-                                  <p>
-                                    Number of Guests:{" "}
-                                    {reservation.numberOfGuests}
-                                  </p>
                                 </li>
                               ))}
                           </div>
