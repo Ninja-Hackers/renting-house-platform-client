@@ -12,14 +12,49 @@ import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import IsPrivate from "./components/IsPrivate";
 import IsAnon from "./components/IsAnon";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function App() {
+  const [houses, setHouses] = useState([]);
+  const [filteredhouses, setFilteredHouses] = useState([]);
+
+  console.log("Houses", houses);
+  console.log("Filtered Houses", filteredhouses);
+
+  //Get All Houses
+  const getAllHouses = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/api/houses`)
+      .then((response) => setHouses(response.data))
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    getAllHouses();
+  }, []);
+
+  //Search House Function
+  const searchHouse = (searchItem) => {
+    console.log("searchItem", searchItem);
+    const newList = houses.filter((house) => {
+      if (searchItem === "") {
+        return house;
+      } else {
+        return house.location.toLowerCase().includes(searchItem.toLowerCase());
+      }
+    });
+    setFilteredHouses(newList);
+  };
   return (
     <div className='App'>
       <NavBar />
       <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/houses' element={<HouseListPage />} />
+        <Route path='/' element={<HomePage callbackToSearch={searchHouse} />} />
+        <Route
+          path='/houses'
+          element={<HouseListPage filteredhouses={filteredhouses} />}
+        />
         <Route
           path='/create-house'
           element={
