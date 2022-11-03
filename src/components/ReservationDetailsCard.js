@@ -1,8 +1,6 @@
-import { Link } from "react-router-dom";
-
 function ReservationDetailsCard({ checkIn, checkOut, numberOfGuests}) {
   return (
-    <div className="card m-5" style={{ width: "20rem" , borderRadius: "2.5rem ", border: ".32rem solid black"}}>
+    <div className="card  h-100 m-5" style={{ width: "20rem" , borderRadius: "2rem ", border: ".2rem solid white"}}>
     <div
             className="card-header bg-dark text-white fs-3"
             style={{ borderRadius: "1.9rem 2rem 0rem 0rem" }}

@@ -46,8 +46,8 @@ function HouseDetailsCard({
     }
   };
   return (
-    <div className="col h-100 py-3">
-      <div className="card mx-4" style={{ border: "0.2rem solid white" }}>
+    <div className="col py-3">
+      <div className="card h-100 mx-4" style={{ border: "0.2rem solid white" }}>
         <img
           className="img-responsive"
           src={imageUrl ? imageUrl : defaultImageUrl}
