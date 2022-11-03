@@ -44,7 +44,7 @@ function App() {
   };
   return (
     <div className='App'>
-      <NavBar />
+      <NavBar callbackToSearch={searchHouse} />
       <Routes>
         <Route path='/' element={<HomePage callbackToSearch={searchHouse} />} />
         <Route

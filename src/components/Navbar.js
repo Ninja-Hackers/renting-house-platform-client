@@ -5,6 +5,8 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const navBtn = {
   backgroundColor: "#7fdff5",
@@ -15,32 +17,47 @@ const navBtn = {
   padding: "0.5rem 1rem",
 };
 
-function NavBar() {
+function NavBar({ callbackToSearch }) {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
+
+  const callSearch = (e) => {
+    e.preventDefault();
+    callbackToSearch(searchInput);
+    navigate("/houses");
+  };
+
   return (
-    <Navbar collapseOnSelect expand="lg" bg="black" variant="dark">
+    <Navbar collapseOnSelect expand='lg' bg='black' variant='dark'>
       <Container>
-        <Navbar.Brand as={Link} to="/">
-          <img src="./home-logo.jpg" width="85" height="45" alt="Home logo" />
+        <Navbar.Brand as={Link} to='/'>
+          <img src='./home-logo.jpg' width='85' height='45' alt='Home logo' />
         </Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/houses">
+        <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+        <Navbar.Collapse id='responsive-navbar-nav'>
+          <Nav className='me-auto'>
+            <Nav.Link
+              as={Link}
+              to='/houses'
+              onClick={(e) => {
+                callSearch(e);
+              }}
+            >
               Houses
             </Nav.Link>
             {isLoggedIn && (
               <>
-                <Nav.Link as={Link} to="/create-house">
+                <Nav.Link as={Link} to='/create-house'>
                   Become a Host
                 </Nav.Link>
-                <NavDropdown title="My Details" id="collasible-nav-dropdown">
-                  <NavDropdown.Item as={Link} to="/my-houses">
+                <NavDropdown title='My Details' id='collasible-nav-dropdown'>
+                  <NavDropdown.Item as={Link} to='/my-houses'>
                     My Houses
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item as={Link} to="/my-reservations">
+                  <NavDropdown.Item as={Link} to='/my-reservations'>
                     My reservations
                   </NavDropdown.Item>
                 </NavDropdown>
@@ -50,20 +67,20 @@ function NavBar() {
           <Nav>
             {isLoggedIn && (
               <>
-                <Nav.Link as={Link} to="/">
+                <Nav.Link as={Link} to='/'>
                   <strong> Hello, {user && user.name}!!!</strong>
                 </Nav.Link>
-                <Nav.Link as={Link} onClick={logOutUser} style={navBtn} to="/">
+                <Nav.Link as={Link} onClick={logOutUser} style={navBtn} to='/'>
                   Logout
                 </Nav.Link>
               </>
             )}
             {!isLoggedIn && (
               <>
-                <Nav.Link as={Link} style={navBtn} to="/login">
+                <Nav.Link as={Link} style={navBtn} to='/login'>
                   Login
                 </Nav.Link>
-                <Nav.Link as={Link} style={navBtn} to="/signup">
+                <Nav.Link as={Link} style={navBtn} to='/signup'>
                   Signup
                 </Nav.Link>
               </>
