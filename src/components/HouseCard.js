@@ -25,7 +25,7 @@ function HouseCard({ title, description, imageUrl, cost, location, _id }) {
                 <i className='fa fa-clock-o'></i> {location}
               </li>
             </ul>
-            <p className='card-sub-title'>Price ${cost}</p>
+            <p className='card-sub-title'>Price: $ {cost}</p>
 
             <Button
               className='button'

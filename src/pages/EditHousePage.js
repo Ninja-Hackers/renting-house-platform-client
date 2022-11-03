@@ -225,7 +225,7 @@ function EditHousePage(props) {
                 <div className="col">
                   <div className="mb-4">
                     <label htmlFor="formCost" className="form-label">
-                      Cost
+                      Cost in USD($)
                     </label>
                     <input
                       type="number"
