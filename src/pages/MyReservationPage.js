@@ -23,7 +23,7 @@ function MyReservationPage() {
   return (
     <div>
       <div
-        className="row row-cols-0 row-cols-md-2 row-cols-lg-2 g-0 vh-120"
+        className='row row-cols-0 row-cols-md-2 row-cols-lg-2 g-0 vh-120'
         style={{ backgroundColor: "#11222b" }}
       >
         {reservations.length > 1 ? (
@@ -32,8 +32,8 @@ function MyReservationPage() {
           ))
         ) : (
           <>
-            <Alert key="primary" variant="primary">
-              <p className="fs-3 m-2">There are no Reservations</p>
+            <Alert key='primary' variant='primary'>
+              <p className='fs-3 m-2'>There are no Reservations</p>
             </Alert>
           </>
         )}
