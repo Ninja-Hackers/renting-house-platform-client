@@ -4,7 +4,6 @@ import HouseCard from "../components/HouseCard";
 import "./HouseListPage.css";
 
 function HouseListPage({ filteredhouses }) {
-  console.log(filteredhouses);
   return (
     <div>
       <div className='product-container'>

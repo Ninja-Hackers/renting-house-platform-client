@@ -19,9 +19,6 @@ function App() {
   const [houses, setHouses] = useState([]);
   const [filteredhouses, setFilteredHouses] = useState([]);
 
-  console.log("Houses", houses);
-  console.log("Filtered Houses", filteredhouses);
-
   //Get All Houses
   const getAllHouses = () => {
     axios
@@ -36,7 +33,6 @@ function App() {
 
   //Search House Function
   const searchHouse = (searchItem) => {
-    console.log("searchItem", searchItem);
     const newList = houses.filter((house) => {
       if (searchItem === "") {
         return house;
