@@ -45,6 +45,8 @@ function EditHousePage(props) {
     padding: "0.5rem 1rem",
     border: "none",
   };
+  const defaultImageUrl =
+    "https://res.cloudinary.com/dlualxvyw/image/upload/v1667406135/renting-house-platform/default-3_c6nyfo.jpg";
 
   const onHandleChange = useCallback((value, name) => {
     setOffers((prev) => ({
@@ -133,7 +135,7 @@ function EditHousePage(props) {
   };
 
   return (
-    <div style={{ backgroundColor: "#11222b" }}>
+    <div className="vh-120" style={{ backgroundColor: "#11222b" }}>
       <div className="container py-5 h-100 " style={{ width: "50%" }}>
         <div className="card" style={{ borderRadius: "2rem" }}>
           <div
@@ -178,7 +180,13 @@ function EditHousePage(props) {
                 <label htmlFor="formImage" className="form-label">
                   Image
                 </label>
-                {/* <img src={imageUrl} alt={title} /> */}
+                <br />
+                <img
+                  className="img-responsive mb-3"
+                  src={imageUrl ? imageUrl : defaultImageUrl}
+                  alt={title}
+                  style={{ width: "40%" }}
+                />
                 <input
                   type="file"
                   className="form-control"

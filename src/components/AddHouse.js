@@ -87,7 +87,7 @@ function AddHouse(props) {
   };
 
   return (
-    <div style={{ backgroundColor: "#11222b" }}>
+    <div className="vh-120" style={{ backgroundColor: "#11222b" }}>
       <div className="container py-5 h-100 " style={{ width: "50%" }}>
         <div className="card" style={{ borderRadius: "2rem" }}>
           <div
@@ -182,7 +182,7 @@ function AddHouse(props) {
                 <div className="col">
                   <div className="mb-4">
                     <label htmlFor="formCost" className="form-label">
-                    Cost in USD($)
+                      Cost in USD($)
                     </label>
                     <input
                       type="number"

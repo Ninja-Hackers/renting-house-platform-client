@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Alert from "react-bootstrap/Alert";
 import ReservationDetailsCard from "../components/ReservationDetailsCard";
 
 function MyReservationPage() {
@@ -21,14 +22,22 @@ function MyReservationPage() {
 
   return (
     <div>
-      <h1>List of My Reservations</h1>
-      {reservations.length > 1 ? (
-        reservations.map((reservation) => (
-          <ReservationDetailsCard key={reservation._id} {...reservation} />
-        ))
-      ) : (
-        <p>There are no reservation</p>
-      )}
+      <div
+        className="row row-cols-0 row-cols-md-2 row-cols-lg-2 g-0 vh-120"
+        style={{ backgroundColor: "#11222b" }}
+      >
+        {reservations.length > 1 ? (
+          reservations.map((reservation) => (
+            <ReservationDetailsCard key={reservation._id} {...reservation} />
+          ))
+        ) : (
+          <>
+            <Alert key="primary" variant="primary">
+              <p className="fs-3 m-2">There are no Reservations</p>
+            </Alert>
+          </>
+        )}
+      </div>
     </div>
   );
 }
