@@ -5,12 +5,16 @@ import AddReservation from "../components/AddReservation";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import "./HouseDetailsPage.css";
+import AddComments from "../components/AddComments";
+import { Button } from "react-bootstrap";
 
 const defaultImageUrl =
   "https://res.cloudinary.com/dlualxvyw/image/upload/v1667407221/renting-house-platform/default-5_ljjaxq.png";
 
 function HouseDetailsPage() {
   const [house, setHouse] = useState(null);
+  const [addFormCondition, setaddFormCondition] = useState(false);
+
   const { houseId } = useParams();
 
   const { user } = useContext(AuthContext);
@@ -27,6 +31,14 @@ function HouseDetailsPage() {
   useEffect(() => {
     getHouse();
   }, []);
+
+  const formOpener = () => {
+    if (addFormCondition === false) {
+      setaddFormCondition(true);
+    } else {
+      setaddFormCondition(false);
+    }
+  };
 
   return (
     <div>
@@ -58,6 +70,25 @@ function HouseDetailsPage() {
                     </h4>
                     <p className='card-text'>{house.description}</p>
                     <p className='card-text'>${house.cost}</p>
+                    <button className='review-btn' onClick={formOpener}>
+                      {house.comments.length} reviews
+                    </button>
+                    {addFormCondition && (
+                      <div className='card'>
+                        {addFormCondition &&
+                          house.comments.map((comment, index) => (
+                            <div key={index}>
+                              <p>{comment}</p>
+                            </div>
+                          ))}
+                      </div>
+                    )}
+                    {house.likes !== 0 && (
+                      <p className='card-text'>
+                        ♥️ {house.likes} people liked it
+                      </p>
+                    )}
+
                     <div className='row'>
                       <div className='row'>
                         <div className='d-flex justify-content-center flex-row'>
@@ -145,6 +176,9 @@ function HouseDetailsPage() {
                 houseId={houseId}
                 {...house}
               />
+              {house && user && house.ownerId !== user._id && (
+                <AddComments refreshHouse={getHouse} {...house} />
+              )}
             </div>
           </div>
 
