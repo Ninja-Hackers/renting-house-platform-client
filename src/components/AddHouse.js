@@ -88,7 +88,7 @@ function AddHouse(props) {
 
   return (
     <div className="vh-120" style={{ backgroundColor: "#11222b" }}>
-      <div className="container py-5 h-100 " style={{ width: "50%" }}>
+      <div className="container py-5 h-100 " style={{ width: "60%" }}>
         <div className="card" style={{ borderRadius: "2rem" }}>
           <div
             className="card-header bg-dark text-white fs-4"

@@ -40,7 +40,7 @@ function EditHousePage(props) {
     backgroundColor: "#DC5345",
     borderRadius: "6px",
     color: "white",
-    margin: "0rem 0.3rem",
+    margin: "1rem 0.5rem",
     fontWeight: "bold",
     padding: "0.5rem 1rem",
     border: "none",
@@ -136,7 +136,7 @@ function EditHousePage(props) {
 
   return (
     <div className="vh-120" style={{ backgroundColor: "#11222b" }}>
-      <div className="container py-5 h-100 " style={{ width: "50%" }}>
+      <div className="container py-5 h-100 " style={{ width: "60%" }}>
         <div className="card" style={{ borderRadius: "2rem" }}>
           <div
             className="card-header bg-dark text-white fs-4"
