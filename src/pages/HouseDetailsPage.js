@@ -101,10 +101,35 @@ function HouseDetailsPage() {
                             <h4 className='align-items-center'>Reservations</h4>
                             {house &&
                               house.reservations.map((reservation) => (
-                                <li className='card mb-2' key={reservation._id}>
-                                  <p>Check In: {reservation.checkIn}</p>
-                                  <p>Check Out: {reservation.checkOut}</p>
-                                </li>
+                                <div
+                                  className='card mb-2'
+                                  key={reservation._id}
+                                >
+                                  <div className='row'>
+                                    <div className='col-12 col-md-6 col-lg-6 mb-2'>
+                                      <p>Check In:</p>
+                                    </div>
+                                    <div className='col-12 col-md-6 col-lg-6 mb-2'>
+                                      <p>
+                                        {new Date(
+                                          reservation.checkIn
+                                        ).toLocaleString("lookup")}
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div className='row'>
+                                    <div className='col'>
+                                      <p>Check Out:</p>
+                                    </div>
+                                    <div className='col'>
+                                      <p>
+                                        {new Date(
+                                          reservation.checkOut
+                                        ).toLocaleString("lookup")}
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
                               ))}
                           </div>
                         </div>
