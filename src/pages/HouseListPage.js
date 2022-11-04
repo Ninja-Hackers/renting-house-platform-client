@@ -1,13 +1,11 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
 import HouseCard from "../components/HouseCard";
 import "./HouseListPage.css";
 
 function HouseListPage({ filteredhouses }) {
   return (
-    <div>
+    <div style={{ backgroundColor: "#11222b"}}>
       <div className='product-container'>
-        <div className='container'>
+        <div className='container' >
           <div className='row flex-row'>
             {filteredhouses &&
               filteredhouses.map((house) => (

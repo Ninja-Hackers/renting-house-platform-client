@@ -8,8 +8,8 @@ const defaultImageUrl =
 function HouseCard({ title, description, imageUrl, cost, location, _id }) {
   return (
     <>
-      <div className='col-12 col-md-6 col-lg-4 mb-2'>
-        <div className='product-card'>
+      <div className='col-12 col-md-6 col-lg-4 mb-2' >
+        <div className='product-card' style={{border:".3rem solid white"}}>
           <div className='card-thumbnail'>
             <img
               className='img-responsive'

@@ -114,7 +114,7 @@ function LoginPage(props) {
                           placeholder="password"
                         />
                         <p className="form-text">
-                          Password needs to have at least 8 chars and must
+                          Password needs to have at least 6 chars and must
                           contain at least one number, one lowercase and one
                           uppercase letter.
                         </p>

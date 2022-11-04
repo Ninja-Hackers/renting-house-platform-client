@@ -31,7 +31,7 @@ function MyReservationPage() {
             ))
           ) : (
             <div
-              className="d-flex justify-content-center"
+              className="d-flex justify-content-center mt-3"
               style={{ width: "100%" }}
             >
               <Alert key="primary" variant="primary">

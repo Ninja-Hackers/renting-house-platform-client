@@ -31,11 +31,14 @@ function MyHousePage() {
               <HouseDetailsCard key={house._id} {...house} />
             ))
           ) : (
-            <>
+            <div
+              className="d-flex justify-content-center mt-3"
+              style={{ width: "100%" }}
+            >
               <Alert key="primary" variant="primary">
                 <p className="fs-5 m-2">There are no houses owned by you</p>
               </Alert>
-            </>
+            </div>
           )}
         </div>
   );
