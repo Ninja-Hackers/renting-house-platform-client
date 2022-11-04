@@ -6,7 +6,6 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import "./HouseDetailsPage.css";
 import AddComments from "../components/AddComments";
-import { Button } from "react-bootstrap";
 
 const defaultImageUrl =
   "https://res.cloudinary.com/dlualxvyw/image/upload/v1667407221/renting-house-platform/default-5_ljjaxq.png";
@@ -74,7 +73,7 @@ function HouseDetailsPage() {
                       {house.comments.length} reviews
                     </button>
                     {addFormCondition && (
-                      <div className='card'>
+                      <div className='card text-black'>
                         {addFormCondition &&
                           house.comments.map((comment, index) => (
                             <div key={index}>
