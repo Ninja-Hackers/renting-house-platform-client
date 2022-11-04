@@ -9,7 +9,6 @@ The goal is gathering house owners and people together in the same platform base
 <div align="justify">
 More importantly, thanks to type of comments and number of likes, they can decide better.
 </div>
-<br>
 
 ### Functionalities
 
