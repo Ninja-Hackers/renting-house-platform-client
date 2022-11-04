@@ -8,7 +8,7 @@ const submitBtn = {
   backgroundColor: "#7fdff5",
   borderRadius: "6px",
   color: "white",
-  margin: "0rem 0.5rem",
+  margin: "1rem 0.5rem",
   fontWeight: "bold",
   padding: "0.5rem 1rem",
   border: "none",
@@ -54,7 +54,7 @@ function HouseDetailsCard({
           alt={title}
         />
         <div className="card-body bg-dark">
-          <div className="row row-cols-1 g-2">
+          <div className="row row-cols-1 g-2 d-flex align-content-between">
             <div className="col text-white">
               <div className="card-body">
                 <h5 className="card-title fs-3">

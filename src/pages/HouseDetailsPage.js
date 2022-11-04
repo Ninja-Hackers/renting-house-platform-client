@@ -41,13 +41,13 @@ function HouseDetailsPage() {
   };
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#11222b" }}>
       <div className='container-img'>
-        <div className='row flex-row justify-content-center mt-4 mb-4'>
+        <div className='row flex-row justify-content-center mb-4'>
           <div className='col-12 col-md-6 col-lg-4 mb-2'>
             {house && (
               <div className='house-img-card'>
-                <div className='card-thumbnail'>
+                <div className='card-thumbnail my-3'>
                   <img
                     className='img-responsive'
                     src={house.imageUrl ? house.imageUrl : defaultImageUrl}
@@ -58,12 +58,12 @@ function HouseDetailsPage() {
             )}
           </div>
         </div>
-        <div className='container-details'>
+        <div className='container-details' >
           <div className='row flex-row justify-content-center'>
-            <div className='col-12 col-md-6 col-lg-6 mb-2'>
+            <div className='col-12 col-md-6 col-lg-6 mb-2' >
               {house && (
                 <div className='card'>
-                  <div className='card-body'>
+                  <div className='card-body bg-dark text-white' style={{borderRadius:"1rem", border:"0.2rem solid white"}}>
                     <h3 className='card-title '>{house.title}</h3>
                     <h4 className='card-subtitle mb-2 text-muted'>
                       {house.location}
@@ -89,32 +89,32 @@ function HouseDetailsPage() {
                       </p>
                     )}
 
-                    <div className='row'>
-                      <div className='row'>
+                    <div className='row justify-content-center'>
+                      <div className='row mb-3'>
                         <div className='d-flex justify-content-center flex-row'>
                           {house.guests && (
                             <p className='card-text'>{house.guests} guests </p>
                           )}
-                          {house.bedroom !== 0 &&(
+                          {house.bedroom &&(
                             <p className='card-text'>
                               • {house.bedroom} bedrooms
                             </p>
                           )}
 
-                          {house.bed!== 0 && (
+                          {house.bed && (
                             <p className='card-text'>• {house.bed} beds</p>
                           )}
-                          {house.bath!== 0 && (
+                          {house.bath && (
                             <p className='card-text'>• {house.bath} bath</p>
                           )}
                         </div>
                       </div>
                       {house.offers.basicOffers.length >= 1 && (
-                        <div className='row'>
-                          <div className='card align-items-start'>
-                            <h4 className='align-items-center'>
+                        <div className='row mb-3 mx-1 text-black'style={{width:"60%"}}>
+                          <div className='card align-items-center'>
+                            <h5 className='align-items-center'>
                               What this place offers
-                            </h4>
+                            </h5>
 
                             <>
                               {house.offers.basicOffers.map((offer) => (
@@ -127,16 +127,16 @@ function HouseDetailsPage() {
                         </div>
                       )}
                       {house && house.reservations.length >= 1 && (
-                        <div className='row'>
-                          <div className='card align-items-center'>
-                            <h4 className='align-items-center'>Reservations</h4>
+                        <div className='row mb-2 mx-1'>
+                          <div className='card align-items-center bg-dark'>
+                            <h4 className='align-items-center text-white'>Reservations</h4>
                             {house &&
                               house.reservations.map((reservation) => (
                                 <div
-                                  className='card mb-2'
+                                  className='card mb-2 text-black'
                                   key={reservation._id}
                                 >
-                                  <div className='row'>
+                                  <div className='row '>
                                     <div className='col-12 col-md-6 col-lg-6 mb-2'>
                                       <p>Check In:</p>
                                     </div>
@@ -165,21 +165,25 @@ function HouseDetailsPage() {
                           </div>
                         </div>
                       )}
+                      
                     </div>
                   </div>
                 </div>
               )}
             </div>
-            <div className='col-12 col-md-4 col-lg-4 mb-2'>
+            <div className='col-12 col-md-4 col-lg-4 mb-4'>
               <AddReservation
                 refreshHouse={getHouse}
                 houseId={houseId}
                 {...house}
               />
+              <div className='col mt-5'>
               {house && user && house.ownerId !== user._id && (
                 <AddComments refreshHouse={getHouse} {...house} />
               )}
             </div>
+            </div>
+            
           </div>
 
           <div className='row flex-row'></div>

@@ -44,12 +44,12 @@ function AddComments({ refreshHouse, likes }) {
   };
 
   return (
-    <div className='card'>
+    <div className='card pt-3'>
       {isLoggedIn ? (
         <>
           <h4>Add a Comment</h4>
           <form onSubmit={handleSubmit}>
-            <div className='col d-flex flex-column justify-content-center col-12 col-md-12 col-lg-12 p-4'>
+            <div className='col d-flex flex-column justify-content-center col-12 col-md-12 col-lg-12 p-3'>
               <label>What do you think about it?</label>
               <input
                 type='text'
@@ -57,8 +57,9 @@ function AddComments({ refreshHouse, likes }) {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
               />
-              <label>Did you like it?</label>
-              <input type='checkbox' name='like' onClick={addLike} />
+              <label className="mt-3">
+              <input type='checkbox' name='like' onClick={addLike} />  Did you like it?
+              </label>
             </div>
             <button className='reservation-btn' type='submit'>
               Submit

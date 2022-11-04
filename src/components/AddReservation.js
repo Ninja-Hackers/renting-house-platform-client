@@ -31,7 +31,7 @@ function AddReservation({ houseId, refreshHouse, ownerId }) {
   };
 
   return (
-    <div className="card">
+    <div className="card pt-3">
       {isLoggedIn ? (
         <>
           <h3>Add New Reservation</h3>
