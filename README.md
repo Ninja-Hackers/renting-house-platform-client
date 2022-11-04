@@ -1,10 +1,47 @@
-# Getting Started with Create React App
+# Renting House Platform - Frontend (React.js)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+![Application image](./public/home-page.png)
 
-In the project directory, you can run:
+<div align="justify">
+The goal is gathering house owners and people together in the same platform based on their locations.
+</div>
+<br>
+<div align="justify">
+More importantly, thanks to type of comments and number of likes, they can decide better.
+</div>
+<br>
+
+### Functionalities
+
+- You can search houses depending on your location search input in the home page.
+- You can be a host by creating a new house.
+- You can update or delete your own house.
+- You can create a reservation.
+- You can add a comment related to your experience.
+- You can add a like to house.
+- You can see your own houses that you created.
+- You can also see your own reservations.
+  <br>
+
+## Stack
+
+This frontend repository is developed with HTML, CSS, Javascript, and Reactjs.
+
+Here is the link of the backend repository: [Backend Github Link](https://github.com/Ninja-Hackers/renting-house-platform-server)
+
+## Instruction to run
+
+### `npm install`
+
+First thing first, download all packages in your local computer.
+
+### `.env variables`
+
+To run with backend, add this environmental variable mentioned below to your local computer by creating .env file.\
+
+REACT_APP_API_URL=http://localhost:5005
 
 ### `npm start`
 
@@ -14,57 +51,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+### `Demo`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Here is the link of deployed frontend React.js App by Netlify: [Renting House Platform](https://renting-house-platform.netlify.app/)
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Here is the link of deployed backend Express API: [Renting House API](https://renting-house.adaptable.app)
