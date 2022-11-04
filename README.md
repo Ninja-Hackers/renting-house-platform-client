@@ -2,8 +2,6 @@
 
 ## Description
 
-![Application image](./public/home-page.png)
-
 <div align="justify">
 The goal is gathering house owners and people together in the same platform based on their locations.
 </div>
