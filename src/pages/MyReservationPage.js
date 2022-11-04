@@ -21,24 +21,25 @@ function MyReservationPage() {
   }, []);
 
   return (
-    <div>
-      <div
-        className='row row-cols-0 row-cols-md-2 row-cols-lg-2 g-0 vh-120'
-        style={{ backgroundColor: "#11222b" }}
-      >
-        {reservations.length > 1 ? (
-          reservations.map((reservation) => (
-            <ReservationDetailsCard key={reservation._id} {...reservation} />
-          ))
-        ) : (
-          <>
-            <Alert key='primary' variant='primary'>
-              <p className='fs-3 m-2'>There are no Reservations</p>
-            </Alert>
-          </>
-        )}
-      </div>
-    </div>
+        <div
+          className="row row-cols-0 row-cols-md-2 row-cols-lg-2 g-0 mh-100"
+          style={{ backgroundColor: "#11222b" }}
+        >
+          {reservations.length > 1 ? (
+            reservations.map((reservation) => (
+              <ReservationDetailsCard key={reservation._id} {...reservation} />
+            ))
+          ) : (
+            <div
+              className="d-flex justify-content-center"
+              style={{ width: "100%" }}
+            >
+              <Alert key="primary" variant="primary">
+                <p className="fs-5 m-2">There are no Reservations</p>
+              </Alert>
+            </div>
+          )}
+        </div>
   );
 }
 

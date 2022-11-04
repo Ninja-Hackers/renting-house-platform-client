@@ -95,16 +95,16 @@ function HouseDetailsPage() {
                           {house.guests && (
                             <p className='card-text'>{house.guests} guests </p>
                           )}
-                          {house.bedroom && (
+                          {house.bedroom !== 0 &&(
                             <p className='card-text'>
                               • {house.bedroom} bedrooms
                             </p>
                           )}
 
-                          {house.bed && (
+                          {house.bed!== 0 && (
                             <p className='card-text'>• {house.bed} beds</p>
                           )}
-                          {house.bath && (
+                          {house.bath!== 0 && (
                             <p className='card-text'>• {house.bath} bath</p>
                           )}
                         </div>

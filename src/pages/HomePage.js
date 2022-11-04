@@ -32,7 +32,7 @@ function HomePage({ callbackToSearch }) {
             Let us guide you home
           </p>
           <section className="d-flex justify-content-center">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} style={{width:"50%"}}>
               <FormGroup role="form" className="d-flex col-6 pt-3 w-100 p-3">
                 <Form.Control
                   type="search"

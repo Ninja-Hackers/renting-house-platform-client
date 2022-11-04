@@ -22,19 +22,22 @@ function MyHousePage() {
   }, []);
 
   return (
-    <>
-      <div className="row row-cols-0 row-cols-md-2 row-cols-lg-3 g-4 vh-120" style={{ backgroundColor: "#11222b" }}>
-        {houses.length >= 1 ? (
-          houses.map((house) => <HouseDetailsCard key={house._id} {...house} />)
-        ) : (
-          <>
-            <Alert key="primary" variant="primary">
-              <p className="fs-3 m-2">There are no houses owned by you</p>
-            </Alert>
-          </>
-        )}
-      </div>
-    </>
+        <div
+          className="row row-cols-0 row-cols-md-2 row-cols-lg-3 g-0 mh-100"
+          style={{ backgroundColor: "#11222b" }}
+        >
+          {houses.length >= 1 ? (
+            houses.map((house) => (
+              <HouseDetailsCard key={house._id} {...house} />
+            ))
+          ) : (
+            <>
+              <Alert key="primary" variant="primary">
+                <p className="fs-5 m-2">There are no houses owned by you</p>
+              </Alert>
+            </>
+          )}
+        </div>
   );
 }
 

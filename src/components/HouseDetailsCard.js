@@ -80,7 +80,7 @@ function HouseDetailsCard({
                       </>
                     ) : (
                       <Alert key="success" variant="success">
-                        <p className="fs-3 m-2">
+                        <p className="fs-5 m-2">
                           There are no offers added to this house
                         </p>
                       </Alert>
@@ -133,7 +133,7 @@ function HouseDetailsCard({
                     </div>
                   ) : (
                     <Alert key="primary" variant="primary">
-                      <p className="fs-3 m-2">
+                      <p className="fs-5 m-2">
                         There are no Reservations to this house
                       </p>
                     </Alert>
